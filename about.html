@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+		<meta http-equiv="content-type" content="text/html;charset=gbk" />
+		<meta name="author" content="www.frebsite.nl" />
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+
+		<title>光伏逆变云监测平台———设备添加</title>
+		<link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+		<link type="text/css" rel="stylesheet" href="css/style.css" />
+		<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
+		<script type="text/javascript" src="js/jquery.flexslider.js"></script>
+		<script type="text/javascript" src="js/jquery.easy-pie-chart.js"></script>
+		<script type="text/javascript" src="js/o-script.js"></script>
+		<script src="https://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+		<link href="css/bootstrap.min-3.3.6.css" rel="stylesheet">	
+<script src="js/mui.min.js"></script>
+	</head>
+	<style type="text/css">
+/*		body{
+			background:url('rili.gif') no-repeat left top;
+		}*/
+
+	</style>
+	<body class="o-page">
+		<div id="page">
+			<div id="header">
+				<a href="#menu"></a>
+				<span id="Logo" class="svg">
+					<img src="img/logo.png" />
+				</span>
+				<a class="backBtn" href="javascript:history.back();"></a>
+			</div>
+			<div class="subHeader">设备添加</div>
+			<div id="content" style="background-image:url(img/city.jpg); height: 800px">
+<div class="signinpanel">
+		<div class="" > 
+           <form action="add.php"   method="post"  >
+
+          <div >
+            <input type="text" class="form-control uname" name="mingcheng" value="" placeholder="设备名称" />
+          </div>
+
+        <div>
+            <input onkeyup="javascript:RepNumber(this)"  type="text" class="form-control uname"  name="bianhao" value="" placeholder="设备编号" />
+        </div>
+          <div>
+            <input type="text" onkeyup="javascript:RepNumber(this)" class="form-control pword m-b"  name="gonglv" value="" placeholder="设备功率" />
+
+        </div>
+        <div  class="col-xs-5"></div>
+       
+        <div class=" col-xs-2">
+          <button  type="submit" name="tianjias"   class="btn btn-success" > 确定 </button>
+        </div>
+         <div  class="col-xs-5"></div>
+      </form>
+		</div>
+
+</div>
+
+
+			
+			
+			<nav id="menu">
+				<ul>
+					<li>
+						<a href="main.html" rel="external">
+							<i class="i-home i-small"></i>首页
+						</a>
+					</li>
+					<li class="Selected">
+						<a href="about.html" rel="external">
+							<i class="i-about i-small"></i>添加设备
+						</a>
+					</li>
+					<li>
+						<a href="blog.html" rel="external">
+							<i class="i-blog i-small"></i>设备列表
+						</a>
+<!-- 						<ul>
+							<li><a href="blog-single-post.html" rel="external">First Post</a></li>
+							<li>
+								<a href="blog-single-post.html" rel="external">Second Post</a>
+							</li>
+						</ul> -->
+					</li>
+					<li >
+						<a href="gallery.html" rel="external">
+							<i class="i-gallery i-small"></i>故障列表
+						</a>
+					</li>
+					<li>
+						<a href="forgetpass.html" rel="external">
+							<i class="i-shortcodes i-small"></i>退出
+						</a>
+					</li>
+					<li>
+						<a href="contact.html" rel="external">
+							<i class="i-contact i-small"></i>个人信息
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</body>
+</html>
+ <script>
+  function RepNumber(obj) {
+            var reg = /^[\d]+$/g;
+             if (!reg.test(obj.value)) {
+                 var txt = obj.value;
+                 txt.replace(/[^0-9]+/, function (char, index, val) {//匹配第一次非数字字符
+                    obj.value = val.replace(/\D/g, "");//将非数字字符替换成""
+                    var rtextRange = null;
+                    if (obj.setSelectionRange) {
+                        obj.setSelectionRange(index, index);
+                    } else {//支持ie
+                        rtextRange = obj.createTextRange();
+                        rtextRange.moveStart('character', index);
+                        rtextRange.collapse(true);
+                        rtextRange.select();
+                    }
+                })
+             }
+         }
+         
+ </script>
+ <script type="text/javascript">
+var old_back = mui.back;
+mui.init({
+gestureConfig:{
+swiperight: true
+}
+});
+mui.back = function(){
+old_back();
+}
+</script>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+
+		<meta http-equiv="content-type" content="text/html;charset=gbk" />
+		<meta name="author" content="www.frebsite.nl" />
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+		<title>光伏逆变云监测平台——设备列表</title>
+		<link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+		<link type="text/css" rel="stylesheet" href="css/style.css" />
+		<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
+		<script type="text/javascript" src="js/jquery.flexslider.js"></script>
+		<script type="text/javascript" src="js/jquery.easy-pie-chart.js"></script>
+		<script type="text/javascript" src="js/o-script.js"></script>
+		<link href="css/style.min.css" rel="stylesheet">
+		<script src="js/mui.min.js"></script> 
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+		<link href="css/bootstrap.min-3.3.6.css" rel="stylesheet">
+		
+	</head>
+	<style type="text/css">
+		a {
+    /* color: #337ab7; */
+   	 text-decoration: none;
+	}
+
+	font-family:"微软雅黑";
+	</style>
+	<body class="o-page" style="background-image:url( img/city.jpg);filter:alpha(opacity=50)";"">
+		<div id="page">
+			<div id="header">
+				<a href="#menu"></a>
+				<span id="Logo" class="svg">
+					<img src="img/logo.png" />
+				</span>
+				<a class="backBtn" href="javascript:history.back();"></a>
+			</div>
+			<div class="subHeader">设备列表</div>
+			<div id="content">					<div class="row back" id="background" class="wall" >
+			
+			<div  class="col-sm-12" >
+			<div class="wrapper wrapper-content">
+				<div class="row animated fadeInRight">
+					<div class="col-sm-12">
+						<div class="ibox float-e-margins">
+							<div class="" id="ibox-content">
+								<div id="vertical-timeline" class="vertical-container light-timeline" ng-app="app" ng-controller="customersCtrl">
+									<!--循环显示列表-->
+									<div class="vertical-timeline-block" ng-repeat="x in names">
+										<div class="vertical-timeline-icon btn-warning">
+
+											<a onclick="show_confirm()" class="shanchu glyphicon glyphicon-remove" style="margin-top: 7px"></a>
+										</div>
+										<div class="vertical-timeline-content" style=" display: block">
+											<h2>设备名称：{{ x.Name }}</h2>
+											<div>
+												<div class="col-sm-2" style="float:left">工作状态：</div>
+												<div class="col-sm-10" style="float:left" id="{{ x.ID }}ztID"></div>
+											</div><br/>
+											<div>
+												<div class="col-sm-2" style="float:left">输出功率：</div>
+												<div class="col-sm-10" id="{{ x.ID }}glID" style="float:left"></div>
+											</div><br/>
+											<div>
+												<div class="col-sm-2" style="float:left">电网频率：</div>
+												<div class="col-sm-10" id="{{ x.ID }}plID" style="float:left"></div>
+											</div>
+											<a href="quxiantu.html?id={{x.ID}}" class="btn btn-sm btn-success">详细信息 </a>
+											<span class="left" style="left:20px"><br><small><!--这里不是当前时间，而是创建设备的时间--><div style="color:#04C5B0"></div></small></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+			</div>
+			</div>
+
+			<nav id="menu">
+				<ul>
+					<li>
+						<a href="main.html" rel="external">
+							<i class="i-home i-small"></i>首页
+						</a>
+					</li>
+					<li>
+						<a href="about.html" rel="external">
+							<i class="i-about i-small"></i>添加设备
+						</a>
+					</li>
+					<li class="Selected">
+						<a href="blog.html" rel="external">
+							<i class="glyphicon glyphicon-th-list i-small"></i>设备列表
+						</a>
+<!-- 						<ul>
+							<li><a href="blog-single-post.html" rel="external">First Post</a></li>
+							<li>
+								<a href="blog-single-post.html" rel="external">Second Post</a>
+							</li>
+						</ul> -->
+					</li>
+					<li >
+						<a href="gallery.html" rel="external">
+							<i class="glyphicon glyphicon-inbox i-small"></i>故障列表
+						</a>
+					</li>
+					<li>
+						<a href="forgetpass.html" rel="external">
+							<i class="glyphicon glyphicon-repeat i-small"></i>退出
+						</a>
+					</li>
+					<li>
+						<a href="contact.html" rel="external">
+							<i class="i-contact i-small"></i>个人信息
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	function show_confirm() {
+		var r = confirm("确定删除该设备？");
+		if(r == true) {
+			alert("删除成功!");
+			window.location.href = 'shanchu.php';
+		} else {
+			alert("没有删除!");
+			
+		}
+	}
+</script>
+
+<script>
+	var ids=new Array();
+	var user="";
+	var i=0;
+	var j=0;
+	var id=";"
+	var websstatus = false;
+	var app = angular.module('app', []);
+	app.controller('customersCtrl', function($scope, $http) {
+		$http.get("http://110.249.208.230/ocean/main.php")
+		.success(function(response) { 
+
+			$scope.names = response.records;
+				//console.log($scope.names.length);
+				for (i=0;i<$scope.names.length;i++)
+				{			 
+					ids[i] = $scope.names[i].ID;
+					user=$scope.names[i].YongHu;
+					//console.log(user);
+					id=ids[i];
+
+					dosend(user,id);
+					
+ 					 // setInterval(function(){
+ 					 // dosend(user,id)},1000);
+ 					 // console.log(id);
+ 					 // console.log(ids[i]);
+ 					 
+ 					}
+
+ 					
+ 				});
+  // //切换到状态 : projectList
+  // $state.go("projectList");
+  //   $scope.$window=$window;
+  // $scope.go_back = function() {
+  //   //$ionicHistory.goBack();
+  //   $window.history.back();
+  //   //alert(111);
+  // };
+  // };
+});
+	function start() {
+		var wsImpl = window.WebSocket || window.MozWebSocket;
+		var jso;
+		var msg;
+		
+				//inc.innerHTML += "connecting to server ..<br/>";
+				// create a new websocket and connect
+				window.ws = new wsImpl('ws://110.249.208.230:8181/');
+				// 分析服务器返回信息
+				ws.onmessage = function(evt) {
+					//解析json字符串获得对象的值
+					jso = eval('(' + evt.data + ')');
+					msg = eval('(' + jso.msg + ')');
+					console.log(jso);
+					//循环给标签id赋值 index页面
+					for(var j=0;j<ids.length;){
+						
+						if(msg.Status == "0") $("#"+ids[j]+"ztID").html("待机状态");
+						else if(msg.Status == "1") $("#"+ids[j]+"ztID").html("正常状态");
+						else if(msg.Status == "3") $("#"+ids[j]+"ztID").html("错误状态");
+						
+						$("#"+id+"glID").html(msg.OutPutWat+"&nbsp W");
+						$("#"+id+"plID").html(msg.PowerNetFac+"&nbsp HZ");
+						console.log(ids.length);
+						console.log(ids[j]);
+						//console.log(ids);
+						j++;
+					}
+					//console.log("te" + jso.te);
+					//console.log(evt.data + "\r\n");
+					//console.log("te");
+				};
+				//发送消息给服务器并建立连接
+				ws.onopen = function() {
+					websstatus = true;
+				};
+				//如果连接失败，发送、接收数据失败或者处理数据出现错误，browser会触发onerror消息;
+				ws.onerror = function(evt) {
+					//inc.innerHTML += '连接错误<br/>';
+				};
+				// when the connection is closed, this method is called
+				ws.onclose = function() {
+					websstatus = false;
+					//inc.innerHTML += '连接关闭<br/>';
+				}
+			}
+
+			function dosend(user,id) {
+				//console.log(id);
+				var strJSON = "{'type':'read','user':'"+user+"','te':'" + id + "','msg':' '}";
+				
+				ws.send(strJSON);
+			}
+
+			window.onload = start;
+		</script>
+		</html>
+		 <script type="text/javascript">
+var old_back = mui.back;
+mui.init({
+gestureConfig:{
+swiperight: true
+}
+});
+mui.back = function(){
+old_back();
+}
+</script>

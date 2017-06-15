@@ -1,0 +1,66 @@
+<!DOCTYPE html>    
+<html>    
+<title>HTML5调用百度地图API进行地理定位实例</title>    
+    <head>    
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=134db1b9cf1f1f2b4427210932b34dcb"></script> 
+        <script src="js/mui.min.js"></script>  
+        <link href="css/style.min.css" rel="stylesheet">
+          <link href="css/bootstrap.min-3.3.6.css" rel="stylesheet"> 
+    </head> 
+
+    <body style="margin:50px 10px;">  
+
+      <div class="header-inner">
+         <a href="main.html"><i class="glyphicon glyphicon-chevron-left"></i></a>
+      </div>   
+        <div id="status" style="text-align: center"></div>    
+        <div style="width:300px;height:480px;border:1px solid gray;margin:30px auto" id="container"></div>    
+    </body>    
+</html>    
+    
+<script type="text/javascript">    
+    //默认地理位置设置为石家庄 
+    var x=114.48,y=38.03;     
+    window.onload = function() {    
+        if(navigator.geolocation) {    
+            navigator.geolocation.getCurrentPosition(showPosition);  
+            document.getElementById("status").innerHTML = "当前位置";    
+                // 百度地图API功能    
+                var map = new BMap.Map("container");    
+                var point = new BMap.Point(x,y);    
+                map.centerAndZoom(point,12);    
+    
+                var geolocation = new BMap.Geolocation();    
+                geolocation.getCurrentPosition(function(r){    
+                    if(this.getStatus() == BMAP_STATUS_SUCCESS){    
+                        var mk = new BMap.Marker(r.point);    
+                        map.addOverlay(mk);    
+                        map.panTo(r.point);    
+                    }    
+                    else {    
+                        alert('failed'+this.getStatus());    
+                    }            
+                },{enableHighAccuracy: true})    
+            return;  
+        }    
+        alert("你的浏览器不支持获取地理位置！");  
+    };    
+    function showPosition(position){  
+      x=position.coords.latitude;   
+      y=position.coords.longitude;    
+    }  
+</script>
+
+
+ <script type="text/javascript">
+var old_back = mui.back;
+mui.init({
+gestureConfig:{
+swiperight: true
+}
+});
+mui.back = function(){
+old_back();
+}
+</script>

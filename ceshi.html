@@ -1,0 +1,54 @@
+<!DOCTYPE html>    
+<html>    
+<title>HTML5调用百度地图API进行地理定位实例</title>    
+    <head>    
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=134db1b9cf1f1f2b4427210932b34dcb"></script> 
+        <script src="js/mui.min.js"></script>  
+        <link href="css/style.min.css" rel="stylesheet">
+          <link href="css/bootstrap.min-3.3.6.css" rel="stylesheet"> 
+    </head> 
+
+    <body style="margin:50px 10px;">  
+
+<div id="allmap">
+    地图加载中...
+</div>   
+    </body>    
+</html>    
+    
+<script type="text/javascript">    
+   mui.plusReady(function(){
+    plus.geolocation.getCurrentPosition(translatePoint,function(e){
+        mui.toast("异常:" + e.message);
+    });
+});
+</script>
+
+
+ <script type="text/javascript">
+var old_back = mui.back;
+mui.init({
+gestureConfig:{
+swiperight: true
+}
+});
+function translatePoint(position){
+    var currentLon = position.coords.longitude;
+    var currentLat = position.coords.latitude;
+    var gpsPoint = new BMap.Point(currentLon,currentLat);
+    BMap.Convertor.translate(gpsPoint,2,initMap); //坐标转换
+}
+function initMap(point){
+    map = new BMap.Map("allmap"); //创建地图
+    map.addControl(new BMap.NavigationControl());
+    map.addControl(new BMap.ScaleControl());
+    map.addControl(new BMap.OverviewMapControl());
+    map.centerAndZoom(point,15);
+    map.addOverlay(new BMap.Marker(point));
+ 
+}
+mui.back = function(){
+old_back();
+}
+</script>

@@ -1,0 +1,183 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="content-type" content="text/html;charset=gbk" />
+		<meta name="author" content="www.frebsite.nl" />
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+
+		<title>光伏逆变云监测平台——首页</title>
+		<link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+		<link type="text/css" rel="stylesheet" href="css/flexslider.css" />
+		<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
+		<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
+		<script type="text/javascript" src="js/jquery.flexslider.js"></script>
+		<script type="text/javascript" src="js/o-script.js"></script>
+		<link href="css/style.min.css" rel="stylesheet">
+		<script src="js/mui.min.js"></script> 
+		<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>	
+		<link href="css/bootstrap.min-3.3.6.css" rel="stylesheet">
+	</head>
+<style type="text/css">
+a:focus, a:hover {
+    color: #23527c;
+    /* text-decoration: underline; */
+}
+	font-family: "微软雅黑", "宋体", "Arial Narrow";
+</style>
+	<body class="o-page">
+		<div id="page">
+			<!-- Header -->
+			<div id="header">
+				<a href="#menu"></a>
+				<span id="Logo" class="svg" >
+					<img src="img/logo.png" />
+				</span>
+				<a class="backBtn" href="javascript:history.back();"></a>
+			</div>
+			<div class="subHeader">首页</div>
+			
+			<!-- Banner -->
+			<div class="bannerPane">
+			  <section class="slider">
+				<div class="flexslider">
+				  <ul class="slides">
+					<li>
+						<img src="img/blog/3.png" />
+						</li>
+<!-- 						<li>
+						<img src="img/blog/2.png" />
+						</li> -->
+<!-- 						<li>
+						<img src="img/blog/1.jpg" />
+						</li> -->
+				  </ul>
+				</div>
+			  </section>
+			</div>
+			<!-- End Banner -->
+			
+			<!-- Content -->
+			<div id="content">
+
+				
+<!-- 				<div class="mainIconPane">
+					<span class="i-pane i-red">
+						<i class="i-flexible"></i>
+					</span>
+					<h4>所在地点信息</h4>
+					<p>
+						<span class="c-red">光伏逆变云检测平台</span> is simply dummy text of the printing...
+					</p>
+				</div>
+			</div> -->
+			
+
+			
+			<div class="exploreSiteFullPane">
+				
+				<a href="#" class="explorePane active">
+					<span class="i-pane i-blue">
+						<img src="img/shouye/shop.png">
+					</span>
+					<h4>首页</h4>
+				</a>
+				<a href="about.html" class="explorePane middle">
+					<span class="i-pane i-blue">
+						<img src="img/shouye/upload.png">
+					</span>
+					<h4>添加设备</h4>
+				</a>
+				<a href="blog.html" class="explorePane">
+					<span class="i-pane i-blue">
+						<img src="img/shouye/barchart.png">
+					</span>
+					<h4>设备列表</h4>
+				</a>
+				<a href="gallery.html" class="explorePane">
+					<span class="i-pane i-blue">
+						<img src="img/shouye/bolt.png">
+					</span>
+					<h4>故障列表</h4>
+				</a>
+				<a href="forgetpass.html" class="explorePane middle">
+					<span class="i-pane i-blue">
+						<img src="img/shouye/power.png">
+					</span>
+					<h4>退出</h4>
+				</a>
+				<!-- href="contact.html" -->
+				<a href="map.html" class="explorePane">
+					<span class="i-pane i-blue">
+						<img src="img/ditu.png">
+					</span>
+					<h4>当前位置</h4>
+				</a>
+			</div>
+			
+
+			
+			<!-- Menu navigation -->
+			<nav id="menu">
+				<ul>
+					<li class="Selected">
+						<a href="main.html">
+							<i class="i-home i-small"></i>首页
+						</a>
+					</li>
+					<li>
+						<a href="about.html">
+							<i class="i-about i-small"></i>添加设备
+						</a>
+					</li>
+					<li>
+						<a href="blog.html">
+							<i class="glyphicon glyphicon-th-list i-small"></i>设备列表
+						</a>
+<!-- 						<ul>
+							<li><a href="blog-single-post.html">故障列表</a></li>
+							<li>
+								<a href="blog-single-post.html">Second Post</a>
+							</li>
+						</ul> -->
+					</li>
+					<li>
+						<a href="gallery.html">
+							<i class="glyphicon glyphicon-inbox i-small"></i>故障列表
+						</a>
+					</li>
+					<li>
+						<a href="forgetpass.html">
+							<i class="glyphicon glyphicon-repeat i-small"></i>退出
+						</a>
+					</li>
+					<li>
+						<a href="contact.html">
+							<i class="i-contact i-small"></i>个人信息
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+	</body>
+</html>
+		<script type="text/javascript">
+			mui.init({
+				keyEventBind: {
+            backbutton: true  //打开back按键监听
+        }
+    });
+			mui.back = function () {
+				var btn = ["确定", "取消"];
+				mui.confirm('退出程序？', '提示', btn, function (e) {
+					if (e.index == 0) {
+                plus.runtime.quit();//退出APP
+            }
+        });
+			}
+		</script>

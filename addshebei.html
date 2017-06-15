@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>设备添加</title>
+<meta name="keywords" content="光伏逆变并网">
+<meta name="description" content="光伏逆变并网">
+<link href="css/bootstrap.min-3.3.6.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/style.min.css" rel="stylesheet">
+<link href="css/login.min.css" rel="stylesheet">
+<meta name="keywords" content="光伏逆变并网云检测平台">
+<meta name="description" content="光伏逆变并网云检测平台">
+<link href="css/animatefordaohang.css" rel="stylesheet">
+<link href="css/stylefordaohang.css" rel="stylesheet">
+<link rel="shortcut icon" href="favicon.ico">
+<script src="https://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script src="js/mui.min.js"></script>
+ <script>
+  function RepNumber(obj) {
+            var reg = /^[\d]+$/g;
+             if (!reg.test(obj.value)) {
+                 var txt = obj.value;
+                 txt.replace(/[^0-9]+/, function (char, index, val) {//匹配第一次非数字字符
+                    obj.value = val.replace(/\D/g, "");//将非数字字符替换成""
+                    var rtextRange = null;
+                    if (obj.setSelectionRange) {
+                        obj.setSelectionRange(index, index);
+                    } else {//支持ie
+                        rtextRange = obj.createTextRange();
+                        rtextRange.moveStart('character', index);
+                        rtextRange.collapse(true);
+                        rtextRange.select();
+                    }
+                })
+             }
+         }
+         
+ </script>
+
+
+</head>
+<style type="text/css">
+      #fh5co-header {
+      padding: 10px 0;
+      width: 60%;
+      margin: 0;
+      border-bottom: 0px solid rgba(0, 0, 0, 0.1);
+      position: relative;
+      
+
+    }
+
+</style>
+
+
+<body class="signin">
+
+<div id="fh5co-page">
+
+<header id="fh5co-header" role="banner">
+		<div class="container">
+			<div class="header-inner">
+				 <a href="main.html" style="color:#53BEDF !important"><img src="img/backlogo.png"></a>
+				<nav role="navigation">
+					<ul>
+						<li><a href="main.html">首页</a></li>
+						<li><a class="active" href="addshebei.php">添加设备</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+<div class="signinpanel">
+		<div class="" > 
+           <form action="add.php"   method="post"  >
+
+          <div >
+            <input type="text" class="form-control uname" name="mingcheng" value="" placeholder="设备名称" />
+          </div>
+
+        <div>
+            <input onkeyup="javascript:RepNumber(this)"  type="text" class="form-control uname"  name="bianhao" value="" placeholder="设备编号" />
+        </div>
+          <div>
+            <input type="text" onkeyup="javascript:RepNumber(this)" class="form-control pword m-b"  name="gonglv" value="" placeholder="设备功率" />
+
+        </div>
+        <div  class="col-xs-5"></div>
+       
+        <div class=" col-xs-2">
+          <button  type="submit" name="tianjias"   class="btn btn-success" > 确定 </button>
+        </div>
+         <div  class="col-xs-5"></div>
+      </form>
+		</div>
+
+</div>
+
+<script src="js/jquery.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+</div>
+</body>
+</html>
+<script type="text/javascript">
+var old_back = mui.back;
+mui.init({
+gestureConfig:{
+swiperight: true
+}
+});
+mui.back = function(){
+old_back();
+}
+</script>
